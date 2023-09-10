@@ -14,7 +14,8 @@
         class="header__logo"
       />
     </header>
-    <main class="main">
+
+    <main id="main">
       <section class="profile">
         <img
           src="./images/img-profile.jpg"
@@ -24,11 +25,22 @@
         <div class="profile__info">
           <h1 class="profile__name">Jacques Cousteau</h1>
           <button class="profile__edit-button"></button>
-          <p class="profile__description">Penjelajah</p>
+          <p class="profile__about">Explore</p>
         </div>
         <button class="profile__add-button"></button>
       </section>
+
+      <section class="popup">
+        <form action="#" class="popup__container">
+          <h2 class="popup__title">Edit profile</h2>
+          <input type="text" class="popup__input popup__input_name" placeholder="Name"/>
+          <input type="text" class="popup__input popup__input_about" placeholder="About me"/>
+          <button class="popup__submit">Save</button>
+          <button class="popup__close"></button>
+        </form>
+      </section>
     </main>
     <footer class="footer"></footer>
+    <script src="scripts/script.js"></script>
   </body>
 </html>

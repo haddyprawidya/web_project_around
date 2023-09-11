@@ -3,50 +3,81 @@
   font-family: Inter;
   display: flex;
   align-items: center;
-  margin: 40px auto 50px;
+  margin: 2.5rem auto 3.125rem;
 }
 .profile__image {
-  width: 120px;
-  height: 120px;
+  width: 7.5rem;
+  height: 7.5rem;
   border-radius: 50%;
-  margin-right: 30px;
+  margin-right: 1.875rem;
 }
 .profile__name {
-  font-size: 42px;
+  font-size: 2.625rem;
   font-style: normal;
   font-weight: 600;
-  line-height: 48px;
-  margin-right: 18px;
+  line-height: 3rem;
+  margin-right: 1.125rem;
   display: inline;
 }
 .profile__about {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin: 16px 0;
+  margin: 1rem 0;
 }
 .profile__edit-button {
-  width: 24px;
-  height: 24px;
-  background-image: url(../images/icon/edit-button.svg);
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url(../images/icon/edit-button.svg) no-repeat center;
+  border: 1px solid #fff;
   background-color: transparent;
-  border: none;
+  /* border: none; */
   cursor: pointer;
 }
 .profile__edit-button:hover {
   opacity: 0.6;
 }
 .profile__add-button {
-  width: 150px;
-  height: 50px;
-  background-image: url(../images/icon/add-button.svg);
+  width: 9.375rem;
+  height: 3.125rem;
+  background: url(../images/icon/add-button.svg) no-repeat center;
   background-color: transparent;
-  border: none;
+  border: 2px solid #fff;
+  padding: 0;
   justify-content: end;
   margin-left: auto;
   cursor: pointer;
 }
 .profile__add-button:hover {
   opacity: 0.6;
+}
+
+@media screen and (max-width: 576px) {
+  .profile {
+    padding: 0 1.19rem;
+    flex-direction: column;
+  }
+  .profile__image {
+    margin: 0 0 1.64rem;
+  }
+  .profile__info {
+    text-align: center;
+  }
+  .profile__name {
+    font-size: 1.375rem;
+    margin-right: 0.62rem;
+  }
+  .profile__edit-button {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+  .profile__add-button {
+    margin: 0 auto;
+    width: 100%;
+  }
+  .profile__about {
+    font-size: 1.125rem;
+    margin: 0 0 2.25rem;
+  }
 }

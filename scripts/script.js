@@ -23,6 +23,5 @@ submitButton.addEventListener("click", function (evt) {
   evt.preventDefault();
   profilName.textContent = inputName.value;
   profilAbout.textContent = inputDescription.value;
-
   popupToggle();
 });

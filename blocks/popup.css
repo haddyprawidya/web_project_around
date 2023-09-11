@@ -53,7 +53,7 @@
   cursor: pointer;
 }
 .popup__submit:hover {
-    opacity: .8;
+  opacity: 0.8;
 }
 .popup__close {
   background: url(../images/icon/close-button.svg) no-repeat transparent center;

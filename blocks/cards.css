@@ -44,6 +44,13 @@
   background-image: url(../images/icon/like-button-active.svg);
 }
 
+@media screen and (max-width: 992px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    /* padding: 0 1.2rem; */
+  }
+}
+
 @media screen and (max-width: 576px) {
   .cards {
     grid-template-columns: 1fr;

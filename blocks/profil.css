@@ -52,6 +52,11 @@
 .profile__add-button:hover {
   opacity: 0.6;
 }
+@media screen and (max-width: 992px) {
+  .profile__name {
+    font-size: 2rem;
+  }
+}
 
 @media screen and (max-width: 576px) {
   .profile {
@@ -81,3 +86,4 @@
     margin: 0 0 2.25rem;
   }
 }
+

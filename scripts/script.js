@@ -20,15 +20,13 @@ const inputDescription = editProfile.querySelector(".popup__input_about");
 const submitButton = editProfile.querySelector(".popup__submit");
 
 function changeForm() {
-  if (
-    inputName.value !== profilName.textContent ||
-    inputDescription.value !== profilAbout.textContent
-  ) {
-    submitButton.disabled = false;
-    if (inputName.value === "" || inputDescription.value === "") {
-      submitButton.disabled = true;
-    }
-  }
+  const nameValue = inputName.value;
+  const descriptionValue = inputDescription.value;
+  const profileNameText = profilName.textContent;
+  const profileAboutText = profilAbout.textContent;
+  const isAnyInputEmpty = nameValue === "" || descriptionValue === "";
+  const hasChanged = nameValue !== profileNameText || descriptionValue !== profileAboutText;
+  submitButton.disabled = !(hasChanged && !isAnyInputEmpty);
 }
 
 editProfile.addEventListener("input", changeForm);

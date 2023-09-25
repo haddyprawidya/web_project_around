@@ -9,6 +9,7 @@
   background-color: #fff;
   border-radius: 1rem;
   overflow: hidden;
+  position: relative;
 }
 .card__menu {
   display: flex;
@@ -53,6 +54,20 @@
 }
 .card__like-icon_active {
   background-image: url(../images/icon/like-button-active.svg);
+}
+.card__delete{
+  width: 1.2rem;
+  height: 1.2rem;
+  background-image: url(../images/icon/trash-button.svg);
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  cursor: pointer;
+  transition: .15s ease-out;
+}
+.card__delete:hover{
+  background-image: url(../images/icon/trash-button-hover.svg);
 }
 
 @media screen and (max-width: 992px) {

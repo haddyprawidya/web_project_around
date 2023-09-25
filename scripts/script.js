@@ -71,6 +71,13 @@ function handleBtnLikeToggle() {
   }
 }
 
+function handleDelCardButton() {
+  const btnDel = Array.from(document.querySelectorAll(".card__delete"));
+  btnDel.forEach((item) => {
+    item.addEventListener("click", (del) => del.target.parentNode.remove());
+  });
+}
+
 editBtn.addEventListener("click", () => {
   const editBtnSubmit = popupEdit.querySelector(".popup__submit");
   popupEdit.classList.add("popup_opened");
@@ -103,3 +110,4 @@ initialCards.forEach((item) => {
 });
 
 handleBtnLikeToggle();
+handleDelCardButton();

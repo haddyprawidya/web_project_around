@@ -39,9 +39,6 @@
   overflow: hidden;
   margin: 0;
 }
-.card__like {
-  display: none;
-}
 .card__like-icon {
   width: 1.3rem;
   height: 1.2rem;
@@ -49,6 +46,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   transition: 0.4s ease-in-out;
+  cursor: pointer;
 }
 .card__like-icon:hover {
   transform: scale(1.1);

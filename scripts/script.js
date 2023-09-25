@@ -58,6 +58,19 @@ function handleCardAdd(name, link) {
   cardsContainer.prepend(cardElement);
 }
 
+function handleBtnLikeToggle() {
+  const btnLikes = Array.from(document.querySelectorAll(".card__like-icon"));
+  btnLikes.forEach((item) => {
+    item.addEventListener("click", btnLikeToogle);
+  });
+  function btnLikeToogle(item) {
+    const btnLike = item.target.classList.contains("card__like-icon_active");
+    btnLike
+      ? item.target.classList.remove("card__like-icon_active")
+      : item.target.classList.add("card__like-icon_active");
+  }
+}
+
 editBtn.addEventListener("click", () => {
   const editBtnSubmit = popupEdit.querySelector(".popup__submit");
   popupEdit.classList.add("popup_opened");
@@ -88,3 +101,5 @@ popupEdit.addEventListener("submit", (evt) => {
 initialCards.forEach((item) => {
   handleCardAdd(item.name, item.link);
 });
+
+handleBtnLikeToggle();

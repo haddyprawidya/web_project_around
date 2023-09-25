@@ -1,3 +1,29 @@
+const initialCards = [
+  {
+    name: "Cityscape during Nighttime",
+    link: "https://images.pexels.com/photos/40142/new-york-skyline-manhattan-hudson-40142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    name: "Statue of Liberty",
+    link: "https://images.pexels.com/photos/356844/pexels-photo-356844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    name: "Bridge",
+    link: "https://images.pexels.com/photos/450597/pexels-photo-450597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    name: "Fabulous Las Vegas",
+    link: "https://images.pexels.com/photos/415999/pexels-photo-415999.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+  {
+    name: "Rock Formation",
+    link: "https://images.pexels.com/photos/844167/pexels-photo-844167.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    name: "Central Park",
+    link: "https://images.pexels.com/photos/11249961/pexels-photo-11249961.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+];
 const profile = document.querySelector("#profile");
 const profilName = profile.querySelector(".profile__name");
 const profilAbout = profile.querySelector(".profile__about");
@@ -17,6 +43,19 @@ function handleCloseBtnPopup() {
       popupEdit.classList.remove("popup_opened");
     });
   });
+}
+
+function handleCardAdd(name, link) {
+  const cardTemplate = document.querySelector("#template__cards").content;
+  const cardsContainer = document.querySelector(".cards");
+  const cardElement = cardTemplate
+    .querySelector(".cards__card")
+    .cloneNode(true);
+  cardElement.querySelector(".card__image").src = link;
+  cardElement.querySelector(".card__image").alt = `Image ${name}`;
+  cardElement.querySelector(".card__title").textContent = name;
+
+  cardsContainer.prepend(cardElement);
 }
 
 editBtn.addEventListener("click", () => {
@@ -44,4 +83,8 @@ popupEdit.addEventListener("submit", (evt) => {
   profilName.textContent = inputName.value;
   profilAbout.textContent = inputDescription.value;
   popupEdit.classList.remove("popup_opened");
+});
+
+initialCards.forEach((item) => {
+  handleCardAdd(item.name, item.link);
 });

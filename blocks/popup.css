@@ -1,8 +1,4 @@
 .popup {
-  display: none;
-}
-.popup_opened {
-  display: block;
   position: fixed;
   top: 0;
   left: 0;
@@ -10,6 +6,14 @@
   height: 100vh;
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: .5s ease-in-out;
+}
+.popup_opened {
+  visibility: visible;
+  opacity: 1;
 }
 .popup__container {
   width: 26.875rem;
@@ -38,6 +42,20 @@
   font-family: Inter;
   font-size: 0.875rem;
   box-sizing: border-box;
+}
+.popup__valid-url, .popup__valid-title {
+  display: none;
+}
+.popup__valid_success {
+  display: block;
+  color: #f00;
+  font-family: Inter;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0;
+  padding-top: .31rem;
+  box-sizing: border-box;
+  border-top: 1px solid #f00;
 }
 .popup__submit {
   margin: 3rem 0 0;

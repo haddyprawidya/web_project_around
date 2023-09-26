@@ -29,11 +29,18 @@ const profilName = profile.querySelector(".profile__name");
 const profilAbout = profile.querySelector(".profile__about");
 
 const editBtn = profile.querySelector(".profile__edit-button");
+const addBtn = profile.querySelector(".profile__add-button");
 
 const popup = document.querySelector("#popup");
 const popupEdit = popup.querySelector(".popup_edit");
 const inputName = popupEdit.querySelector(".popup__input_name");
 const inputDescription = popupEdit.querySelector(".popup__input_about");
+
+const popupAdd = popup.querySelector(".popup_add");
+const inputTitle = popupAdd.querySelector(".popup__input_title");
+const inputUrl = popupAdd.querySelector(".popup__input_url");
+const errTitle = popupAdd.querySelector(".popup__valid-title");
+const errUrl = popupAdd.querySelector(".popup__valid-url");
 
 function handleCloseBtnPopup() {
   const closeBtn = Array.from(popup.querySelectorAll(".popup__close"));
@@ -41,6 +48,9 @@ function handleCloseBtnPopup() {
     const popupImage = popup.querySelector(".popup_images");
     item.addEventListener("click", () => {
       popupEdit.classList.remove("popup_opened");
+      popupAdd.classList.remove("popup_opened");
+      inputTitle.value = "";
+      inputUrl.value = "";
     });
   });
 }
@@ -78,6 +88,21 @@ function handleDelCardButton() {
   });
 }
 
+function handleValidFormAdd() {
+  if (inputTitle.value === "") {
+    errTitle.classList.add("popup__valid_success");
+    return false
+  }
+  if (!inputUrl.value.includes("https")) {
+    if (inputTitle.value !== "") {
+      errTitle.classList.remove("popup__valid_success");
+    }
+    errUrl.classList.add("popup__valid_success");
+    return false
+  }
+  return true
+}
+
 editBtn.addEventListener("click", () => {
   const editBtnSubmit = popupEdit.querySelector(".popup__submit");
   popupEdit.classList.add("popup_opened");
@@ -103,6 +128,32 @@ popupEdit.addEventListener("submit", (evt) => {
   profilName.textContent = inputName.value;
   profilAbout.textContent = inputDescription.value;
   popupEdit.classList.remove("popup_opened");
+});
+
+addBtn.addEventListener("click", () => {
+  const addBtnSubmit = popupAdd.querySelector(".popup__submit");
+  popupAdd.classList.add("popup_opened");
+  errTitle.classList.remove("popup__valid_success");
+  errUrl.classList.remove("popup__valid_success");
+  handleCloseBtnPopup();
+});
+
+popupAdd.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+
+  const formValidator = handleValidFormAdd()
+  if(!formValidator) return false;
+  
+  initialCards.unshift({ name: inputTitle.value, link: inputUrl.value });
+  handleCardAdd(inputTitle.value, inputUrl.value);
+
+
+  inputTitle.value = "";
+  inputUrl.value = "";
+
+  popupAdd.classList.remove("popup_opened");
+  handleBtnLikeToggle();
+  handleDelCardButton();
 });
 
 initialCards.forEach((item) => {

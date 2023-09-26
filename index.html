@@ -16,119 +16,78 @@
     </header>
 
     <main id="main">
-      <section class="profile">
+      <section id="profile">
         <img
           src="./images/img-profile.jpg"
           alt="profile Piture"
           class="profile__image"
         />
         <div class="profile__info">
-          <h1 class="profile__name">Jacques Cousteau</h1>
-          <button class="profile__edit-button"></button>
-          <p class="profile__about">Explore</p>
+          <h1 class="profile__name">Haddy Prawidya Putra</h1>
+          <input type="button" class="profile__edit-button" />
+          <p class="profile__about">Web Developer</p>
         </div>
-        <button class="profile__add-button"></button>
+        <input type="button" class="profile__add-button" />
       </section>
 
-      <section class="popup">
-        <form action="#" class="popup__container">
-          <h2 class="popup__title">Edit profile</h2>
-          <input
-            type="text"
-            class="popup__input popup__input_name"
-            placeholder="Name"
-          />
-          <input
-            type="text"
-            class="popup__input popup__input_about"
-            placeholder="About me"
-          />
-          <button class="popup__submit">Save</button>
-          <button class="popup__close"></button>
+      <section id="popup">
+        <form class="popup popup_edit">
+          <div class="popup__container">
+            <h2 class="popup__title">Edit profile</h2>
+            <input
+              type="text"
+              class="popup__input popup__input_name"
+              placeholder="Name"
+            />
+            <input
+              type="text"
+              class="popup__input popup__input_about"
+              placeholder="About me"
+            />
+            <button type="submit" class="popup__submit">Save</button>
+            <input type="button" class="popup__close" />
+          </div>
         </form>
-      </section>
-
-      <section class="cards">
-        <div class="cards__card">
-          <img
-            src="./images/cards/card-1.jpg"
-            alt="image-1"
-            class="card__image"
-          />
-          <label for="cards-1" class="card__menu">
-            <input type="checkbox" class="card__like" id="cards-1" />
-            <span class="card__title">Lembah Yosemite</span>
-            <span class="card__like-icon"></span>
-          </label>
-        </div>
-
-        <div class="cards__card">
-          <img
-            src="./images/cards/card-2.jpg"
-            alt="image-2"
-            class="card__image"
-          />
-          <label for="cards-2" class="card__menu">
-            <input type="checkbox" class="card__like" id="cards-2" />
-            <span class="card__title">Danau Louise</span>
-            <span class="card__like-icon"></span>
-          </label>
-        </div>
-
-        <div class="cards__card">
-          <img
-            src="./images/cards/card-3.jpg"
-            alt="image-3"
-            class="card__image"
-          />
-          <label for="cards-3" class="card__menu">
-            <input type="checkbox" class="card__like" id="cards-3" />
-            <span class="card__title">Pegunungan Gundul</span>
-            <span class="card__like-icon"></span>
-          </label>
-        </div>
-
-        <div class="cards__card">
-          <img
-            src="./images/cards/card-4.jpg"
-            alt="image-4"
-            class="card__image"
-          />
-          <label for="cards-4" class="card__menu">
-            <input type="checkbox" class="card__like" id="cards-4" />
-            <span class="card__title">Latemar</span>
-            <span class="card__like-icon"></span>
-          </label>
-        </div>
-
-        <div class="cards__card">
-          <img
-            src="./images/cards/card-5.jpg"
-            alt="image-5"
-            class="card__image"
-          />
-          <label for="cards-5" class="card__menu">
-            <input type="checkbox" class="card__like" id="cards-5" />
-            <span class="card__title"
-              >Vanoise National Park Vanoise National Park</span
-            >
-            <span class="card__like-icon"></span>
-          </label>
-        </div>
-
-        <div class="cards__card">
-          <img
-            src="./images/cards/card-6.jpg"
-            alt="image-6"
-            class="card__image"
-          />
-          <label for="cards-6" class="card__menu">
-            <input type="checkbox" class="card__like" id="cards-6" />
-            <span class="card__title">Lago di Braies</span>
-            <span class="card__like-icon"></span>
-          </label>
+        <form class="popup popup_add">
+          <div class="popup__container">
+            <h2 class="popup__title">New Place</h2>
+            <input
+              type="text"
+              class="popup__input popup__input_title"
+              placeholder="Title"
+            />
+            <p class="popup__valid-title">Please Input Title</p>
+            <input
+              type="text"
+              class="popup__input popup__input_url"
+              placeholder="URL"
+            />
+            <p class="popup__valid-url">Please Input Image Address</p>
+            <button type="submit" class="popup__submit">Save</button>
+            <input type="button" class="popup__close" />
+          </div>
+        </form>
+        <div class="popup popup_images">
+          <div class="popup__image-container">
+            <img class="popup__image" />
+            <button class="popup__close"></button>
+            <h2 class="popup__description">Warning</h2>
+          </div>
         </div>
       </section>
+
+      <template id="template__cards">
+        <div class="cards__card">
+          <img class="card__image" />
+          <div class="card__menu">
+            <h2 class="card__title"></h2>
+            <div class="card__like-icon"></div>
+          </div>
+          <div class="card__delete"></div>
+        </div>
+      </template>
+
+      <section class="cards"></section>
     </main>
 
     <footer class="footer">

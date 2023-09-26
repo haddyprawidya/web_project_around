@@ -2,13 +2,14 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1.25rem 1.06rem;
-  justify-content: space-between;
+  justify-content: center;
   font-size: 0;
 }
 .cards__card {
   background-color: #fff;
   border-radius: 1rem;
   overflow: hidden;
+  position: relative;
 }
 .card__menu {
   display: flex;
@@ -18,6 +19,16 @@
 }
 .card__image {
   width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  font-size: 1rem;
+  font-family: "Inter";
+  line-height: 282px;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+}
+.card__image:hover {
+  opacity: 0.85;
 }
 .card__title {
   font-family: Inter;
@@ -29,9 +40,6 @@
   overflow: hidden;
   margin: 0;
 }
-.card__like {
-  display: none;
-}
 .card__like-icon {
   width: 1.3rem;
   height: 1.2rem;
@@ -39,15 +47,32 @@
   background-repeat: no-repeat;
   background-size: contain;
   transition: 0.4s ease-in-out;
+  cursor: pointer;
 }
-.card__like:checked ~ .card__like-icon {
+.card__like-icon:hover {
+  transform: scale(1.1);
+}
+.card__like-icon_active {
   background-image: url(../images/icon/like-button-active.svg);
+}
+.card__delete {
+  width: 1.2rem;
+  height: 1.2rem;
+  background-image: url(../images/icon/trash-button.svg);
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+  cursor: pointer;
+  transition: 0.15s ease-out;
+}
+.card__delete:hover {
+  background-image: url(../images/icon/trash-button-hover.svg);
 }
 
 @media screen and (max-width: 992px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
-    /* padding: 0 1.2rem; */
   }
 }
 

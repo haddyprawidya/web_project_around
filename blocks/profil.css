@@ -1,4 +1,4 @@
-.profile {
+#profile {
   color: white;
   font-family: Inter;
   display: flex;
@@ -59,7 +59,7 @@
 }
 
 @media screen and (max-width: 576px) {
-  .profile {
+  #profile {
     padding: 0 1.19rem;
     flex-direction: column;
   }
@@ -86,4 +86,3 @@
     margin: 0 0 2.25rem;
   }
 }
-

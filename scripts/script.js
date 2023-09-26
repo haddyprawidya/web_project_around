@@ -24,7 +24,7 @@ const initialCards = [
     link: "https://images.pexels.com/photos/11249961/pexels-photo-11249961.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
 ];
-const profile = document.querySelector("#profile");
+const profile = document.querySelector(".profile");
 const profilName = profile.querySelector(".profile__name");
 const profilAbout = profile.querySelector(".profile__about");
 

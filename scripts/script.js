@@ -68,18 +68,19 @@ function handleCardAdd(name, link) {
 
   cardsContainer.prepend(cardElement);
 }
+function btnLikeToogle(item) {
+  const btnLike = item.target.classList.contains("card__like-icon_active");
+  btnLike
+    ? item.target.classList.remove("card__like-icon_active")
+    : item.target.classList.add("card__like-icon_active");
+}
 
 function handleBtnLikeToggle() {
   const btnLikes = Array.from(document.querySelectorAll(".card__like-icon"));
   btnLikes.forEach((item) => {
     item.addEventListener("click", btnLikeToogle);
   });
-  function btnLikeToogle(item) {
-    const btnLike = item.target.classList.contains("card__like-icon_active");
-    btnLike
-      ? item.target.classList.remove("card__like-icon_active")
-      : item.target.classList.add("card__like-icon_active");
-  }
+  
 }
 
 function handleDelCardButton() {

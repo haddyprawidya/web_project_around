@@ -49,6 +49,7 @@ function handleCloseBtnPopup() {
     item.addEventListener("click", () => {
       popupEdit.classList.remove("popup_opened");
       popupAdd.classList.remove("popup_opened");
+      popupImage.classList.remove("popup_opened");
       inputTitle.value = "";
       inputUrl.value = "";
     });
@@ -103,6 +104,24 @@ function handleValidFormAdd() {
   return true
 }
 
+function handleCardImagePopup() {
+  const cardsImage = Array.from(document.querySelectorAll(".card__image"));
+  cardsImage.map((item) => {
+    item.addEventListener("click", (image) => {
+      const popImageContainer = document.querySelector(".popup_images");
+      popImageContainer.classList.add("popup_opened");
+      const popImageUrl = popImageContainer.querySelector(".popup__image");
+      const popDesc = popImageContainer.querySelector(".popup__description");
+      const popTitle =
+        image.target.parentNode.querySelector(".card__title").textContent;
+
+      popImageUrl.src = image.target.src;
+      popDesc.textContent = popTitle;
+      handleCloseBtnPopup();
+    });
+  });
+}
+
 editBtn.addEventListener("click", () => {
   const editBtnSubmit = popupEdit.querySelector(".popup__submit");
   popupEdit.classList.add("popup_opened");
@@ -154,6 +173,7 @@ popupAdd.addEventListener("submit", (evt) => {
   popupAdd.classList.remove("popup_opened");
   handleBtnLikeToggle();
   handleDelCardButton();
+  handleCardImagePopup();
 });
 
 initialCards.forEach((item) => {
@@ -162,3 +182,4 @@ initialCards.forEach((item) => {
 
 handleBtnLikeToggle();
 handleDelCardButton();
+handleCardImagePopup();

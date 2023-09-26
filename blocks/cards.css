@@ -22,13 +22,13 @@
   object-fit: cover;
   aspect-ratio: 1/1;
   font-size: 1rem;
-  font-family: 'Inter';
+  font-family: "Inter";
   line-height: 282px;
   cursor: pointer;
-  transition: .3s ease-out;
+  transition: 0.3s ease-out;
 }
 .card__image:hover {
-  opacity: .85;
+  opacity: 0.85;
 }
 .card__title {
   font-family: Inter;
@@ -55,18 +55,18 @@
 .card__like-icon_active {
   background-image: url(../images/icon/like-button-active.svg);
 }
-.card__delete{
+.card__delete {
   width: 1.2rem;
   height: 1.2rem;
   background-image: url(../images/icon/trash-button.svg);
   position: absolute;
   top: 8px;
   right: 8px;
-  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
   cursor: pointer;
-  transition: .15s ease-out;
+  transition: 0.15s ease-out;
 }
-.card__delete:hover{
+.card__delete:hover {
   background-image: url(../images/icon/trash-button-hover.svg);
 }
 

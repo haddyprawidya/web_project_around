@@ -92,16 +92,16 @@ function handleDelCardButton() {
 function handleValidFormAdd() {
   if (inputTitle.value === "") {
     errTitle.classList.add("popup__valid_success");
-    return false
+    return false;
   }
   if (!inputUrl.value.includes("https")) {
     if (inputTitle.value !== "") {
       errTitle.classList.remove("popup__valid_success");
     }
     errUrl.classList.add("popup__valid_success");
-    return false
+    return false;
   }
-  return true
+  return true;
 }
 
 function handleCardImagePopup() {
@@ -150,7 +150,6 @@ popupEdit.addEventListener("submit", (evt) => {
 });
 
 addBtn.addEventListener("click", () => {
-  const addBtnSubmit = popupAdd.querySelector(".popup__submit");
   popupAdd.classList.add("popup_opened");
   errTitle.classList.remove("popup__valid_success");
   errUrl.classList.remove("popup__valid_success");
@@ -160,12 +159,11 @@ addBtn.addEventListener("click", () => {
 popupAdd.addEventListener("submit", (evt) => {
   evt.preventDefault();
 
-  const formValidator = handleValidFormAdd()
-  if(!formValidator) return false;
-  
+  const formValidator = handleValidFormAdd();
+  if (!formValidator) return false;
+
   initialCards.unshift({ name: inputTitle.value, link: inputUrl.value });
   handleCardAdd(inputTitle.value, inputUrl.value);
-
 
   inputTitle.value = "";
   inputUrl.value = "";

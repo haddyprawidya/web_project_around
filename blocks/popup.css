@@ -9,7 +9,7 @@
   z-index: 1;
   visibility: hidden;
   opacity: 0;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 .popup_opened {
   visibility: visible;
@@ -43,7 +43,8 @@
   font-size: 0.875rem;
   box-sizing: border-box;
 }
-.popup__valid-url, .popup__valid-title {
+.popup__valid-url,
+.popup__valid-title {
   display: none;
 }
 .popup__valid_success {
@@ -53,7 +54,7 @@
   font-size: 0.75rem;
   font-weight: 600;
   margin: 0;
-  padding-top: .31rem;
+  padding-top: 0.31rem;
   box-sizing: border-box;
   border-top: 1px solid #f00;
 }
@@ -74,7 +75,7 @@
   opacity: 0.8;
 }
 .popup__submit:disabled {
-  opacity: .8;
+  opacity: 0.8;
   background-color: #fff;
   border: 1px solid;
   color: grey;

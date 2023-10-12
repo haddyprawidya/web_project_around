@@ -39,20 +39,30 @@ const inputDescription = popupEdit.querySelector(".popup__input_about");
 const popupAdd = popup.querySelector(".popup_add");
 const inputTitle = popupAdd.querySelector(".popup__input_title");
 const inputUrl = popupAdd.querySelector(".popup__input_url");
-const errTitle = popupAdd.querySelector(".popup__valid-title");
-const errUrl = popupAdd.querySelector(".popup__valid-url");
 
 function handleCloseBtnPopup() {
   const closeBtn = Array.from(popup.querySelectorAll(".popup__close"));
-  closeBtn.forEach((item) => {
+  const popupContainer = Array.from(popup.querySelectorAll(".popup"));
+
+  const closePopup = () => {
     const popupImage = popup.querySelector(".popup_images");
-    item.addEventListener("click", () => {
-      popupEdit.classList.remove("popup_opened");
-      popupAdd.classList.remove("popup_opened");
-      popupImage.classList.remove("popup_opened");
-      inputTitle.value = "";
-      inputUrl.value = "";
+    popupEdit.classList.remove("popup_opened");
+    popupAdd.classList.remove("popup_opened");
+    popupImage.classList.remove("popup_opened");
+    inputTitle.value = "";
+    inputUrl.value = "";
+  };
+
+  closeBtn.forEach((item) => item.addEventListener("click", closePopup));
+  popupContainer.forEach((item) => {
+    item.addEventListener("click", function (evt) {
+      if (evt.target.classList.contains("popup_opened")) {
+        closePopup();
+      }
     });
+  });
+  document.addEventListener("keyup", (evt) => {
+    if (evt.key === "Escape") closePopup();
   });
 }
 
@@ -80,7 +90,6 @@ function handleBtnLikeToggle() {
   btnLikes.forEach((item) => {
     item.addEventListener("click", btnLikeToogle);
   });
-  
 }
 
 function handleDelCardButton() {
@@ -88,21 +97,6 @@ function handleDelCardButton() {
   btnDel.forEach((item) => {
     item.addEventListener("click", (del) => del.target.parentNode.remove());
   });
-}
-
-function handleValidFormAdd() {
-  if (inputTitle.value === "") {
-    errTitle.classList.add("popup__valid_success");
-    return false;
-  }
-  if (!inputUrl.value.includes("https")) {
-    if (inputTitle.value !== "") {
-      errTitle.classList.remove("popup__valid_success");
-    }
-    errUrl.classList.add("popup__valid_success");
-    return false;
-  }
-  return true;
 }
 
 function handleCardImagePopup() {
@@ -123,24 +117,31 @@ function handleCardImagePopup() {
   });
 }
 
+function hasError() {
+  const errorMessage = Array.from(
+    popup.querySelectorAll(".popup__input-error_active")
+  );
+  const errorLine = Array.from(popup.querySelectorAll(".popup__input_error"));
+
+  errorMessage.forEach((hasClass) =>
+    hasClass.classList.remove("popup__input-error_active")
+  );
+  errorLine.forEach((hasClass) =>
+    hasClass.classList.remove("popup__input_error")
+  );
+}
+
 editBtn.addEventListener("click", () => {
-  const editBtnSubmit = popupEdit.querySelector(".popup__submit");
+  const popupEditSubmit = popupEdit.querySelector(".popup__submit");
+
+  popupEditSubmit.classList.add("popup__submit_disabled");
   popupEdit.classList.add("popup_opened");
+
+  hasError();
   handleCloseBtnPopup();
 
   inputName.value = profilName.textContent;
   inputDescription.value = profilAbout.textContent;
-  editBtnSubmit.disabled = true;
-  popupEdit.addEventListener("input", () => {
-    const nameValue = inputName.value;
-    const descriptionValue = inputDescription.value;
-    const profileNameText = profilName.textContent;
-    const profileAboutText = profilAbout.textContent;
-    const isAnyInputEmpty = nameValue === "" || descriptionValue === "";
-    const hasChanged =
-      nameValue !== profileNameText || descriptionValue !== profileAboutText;
-    editBtnSubmit.disabled = !(hasChanged && !isAnyInputEmpty);
-  });
 });
 
 popupEdit.addEventListener("submit", (evt) => {
@@ -151,17 +152,15 @@ popupEdit.addEventListener("submit", (evt) => {
 });
 
 addBtn.addEventListener("click", () => {
+  const popupAddSubmit = popupAdd.querySelector(".popup__submit");
+  popupAddSubmit.classList.add("popup__submit_disabled");
   popupAdd.classList.add("popup_opened");
-  errTitle.classList.remove("popup__valid_success");
-  errUrl.classList.remove("popup__valid_success");
+  hasError();
   handleCloseBtnPopup();
 });
 
 popupAdd.addEventListener("submit", (evt) => {
   evt.preventDefault();
-
-  const formValidator = handleValidFormAdd();
-  if (!formValidator) return false;
 
   initialCards.unshift({ name: inputTitle.value, link: inputUrl.value });
   handleCardAdd(inputTitle.value, inputUrl.value);

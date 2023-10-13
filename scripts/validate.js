@@ -32,8 +32,10 @@ function enableValidation(validationObject) {
   const toggleButtonState = function (inputList, buttonElement) {
     if (hasInvaildInput(inputList)) {
       buttonElement.classList.add(validationObject.inactiveButtonClass);
+      buttonElement.disabled = true
     } else {
       buttonElement.classList.remove(validationObject.inactiveButtonClass);
+      buttonElement.disabled = false
     }
   };
 

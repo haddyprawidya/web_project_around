@@ -55,7 +55,7 @@ function handleCloseBtnPopup() {
 
   closeBtn.forEach((item) => item.addEventListener("click", closePopup));
   popupContainer.forEach((item) => {
-    item.addEventListener("click", function (evt) {
+    item.addEventListener("mousedown", function (evt) {
       if (evt.target.classList.contains("popup_opened")) {
         closePopup();
       }
@@ -135,6 +135,7 @@ editBtn.addEventListener("click", () => {
   const popupEditSubmit = popupEdit.querySelector(".popup__submit");
 
   popupEditSubmit.classList.add("popup__submit_disabled");
+  popupEditSubmit.disabled = true
   popupEdit.classList.add("popup_opened");
 
   hasError();
@@ -154,6 +155,7 @@ popupEdit.addEventListener("submit", (evt) => {
 addBtn.addEventListener("click", () => {
   const popupAddSubmit = popupAdd.querySelector(".popup__submit");
   popupAddSubmit.classList.add("popup__submit_disabled");
+  popupAddSubmit.disabled = true;
   popupAdd.classList.add("popup_opened");
   hasError();
   handleCloseBtnPopup();

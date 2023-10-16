@@ -1,4 +1,4 @@
-function enableValidation(validationObject) {
+export function enableValidation(validationObject) {
   const formList = Array.from(
     document.querySelectorAll(validationObject.formSelector)
   );
@@ -32,10 +32,10 @@ function enableValidation(validationObject) {
   const toggleButtonState = function (inputList, buttonElement) {
     if (hasInvaildInput(inputList)) {
       buttonElement.classList.add(validationObject.inactiveButtonClass);
-      buttonElement.disabled = true
+      buttonElement.disabled = true;
     } else {
       buttonElement.classList.remove(validationObject.inactiveButtonClass);
-      buttonElement.disabled = false
+      buttonElement.disabled = false;
     }
   };
 
@@ -60,12 +60,3 @@ function enableValidation(validationObject) {
     setEventListener(formElement);
   });
 }
-
-enableValidation({
-  formSelector: ".popup",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: "popup__submit_disabled",
-  inputErrorClass: "popup__input_error",
-  errorClass: "popup__input-error_active",
-});

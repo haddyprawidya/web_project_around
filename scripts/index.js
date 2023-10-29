@@ -1,6 +1,5 @@
 import Card from "./Card.js";
-import {enableValidation} from './FormValidator.js';
-import './utils.js'
+import "./utils.js";
 
 export const initialCards = [
   {
@@ -35,14 +34,4 @@ initialCards.forEach((item) => {
   const cardElement = card.generateCard();
 
   cardsContainer.prepend(cardElement);
-});
-
-
-enableValidation({
-  formSelector: ".popup",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: "popup__submit_disabled",
-  inputErrorClass: "popup__input_error",
-  errorClass: "popup__input-error_active",
 });

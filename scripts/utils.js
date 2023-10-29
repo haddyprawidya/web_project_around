@@ -1,4 +1,5 @@
 import { initialCards, cardsContainer } from "./index.js";
+import  FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
 
 export function handleCloseBtnPopup() {
@@ -63,18 +64,20 @@ export default (function () {
   editBtn.addEventListener("click", () => {
     const popupEditSubmit = popupEdit.querySelector(".popup__submit");
     popupEditSubmit.classList.add("popup__submit_disabled");
-    popupEditSubmit.disabled = true
+    popupEditSubmit.disabled = true;
     popupEdit.classList.add("popup_opened");
+
+    new FormValidator(".popup_edit").enableValidation();
 
     hasError();
     handleCloseBtnPopup();
-
     inputName.value = profilName.textContent;
     inputDescription.value = profilAbout.textContent;
   });
 
   popupEdit.addEventListener("submit", (evt) => {
     evt.preventDefault();
+
     profilName.textContent = inputName.value;
     profilAbout.textContent = inputDescription.value;
     popupEdit.classList.remove("popup_opened");
@@ -85,6 +88,9 @@ export default (function () {
     popupAddSubmit.classList.add("popup__submit_disabled");
     popupAddSubmit.disabled = true;
     popupAdd.classList.add("popup_opened");
+
+    new FormValidator(".popup_add").enableValidation();
+
     hasError();
     handleCloseBtnPopup();
   });
@@ -93,7 +99,6 @@ export default (function () {
     evt.preventDefault();
 
     initialCards.push({ name: inputTitle.value, link: inputUrl.value });
-    //   handleCardAdd(inputTitle.value, inputUrl.value);
 
     const card = new Card(
       { name: inputTitle.value, link: inputUrl.value },

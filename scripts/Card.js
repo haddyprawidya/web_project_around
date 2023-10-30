@@ -44,11 +44,11 @@ export default class Card {
     const popImageContainer = document.querySelector(".popup_images");
     const imageItem = this._element.querySelector(".card__image");
     imageItem.addEventListener("click", () => {
-      popImageContainer.classList.add("popup_opened");
-
       popImageContainer.querySelector(".popup__image").src = this._link;
       popImageContainer.querySelector(".popup__description").textContent =
         this._name;
+
+      popImageContainer.classList.add("popup_opened");
       handleCloseBtnPopup();
     });
   }
